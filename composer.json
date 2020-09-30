@@ -1,0 +1,13 @@
+{
+    "name": "bumloner/taskboard",
+    "type": "project",
+    "authors": [
+        {
+            "name": "bumloner",
+            "email": "bumloner@yandex.ru"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}
