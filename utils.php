@@ -10,7 +10,10 @@ class Html
             'debug' => (App::$config['env'] === 'dev'),
         ]);
 
+        // "static_arg" forcing update cache of static files
         $data['config'] = App::$config['viewData'];
+        $data['config']['static_arg'] = ((App::$config['env'] === 'dev') ? '?' . time() : '');
+
         $data['msg'] = Router::getMsg();
         $data['is_logged'] = is_logged();
 
