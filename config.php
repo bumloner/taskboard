@@ -1,11 +1,10 @@
 <?php
 
 $config = [
-
-
     'db' => [
-        'host' => '',
-        'user' => '',
+        'dsn' => 'mysql:host=localhost;dbname=taskboard',
+        'user' => 'root',
+        'password' => '',
     ],
 ];
 
