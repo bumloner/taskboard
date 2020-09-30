@@ -1,9 +1,12 @@
 <?php
 
-class IndexRoute
+function index_route()
 {
-    public static function run()
-    {
-        return Html::render('index');
-    }
+    $task = new Task();
+    $task->setUsername('Ivan');
+    echo $task->getUsername();
+
+
+
+    return Html::render('index');
 }
