@@ -2,9 +2,9 @@
 
 function index_route()
 {
-    $task = new Task();
-    $task->setUsername('Ivan');
-    echo $task->getUsername();
+//    $task = new Task();
+//    $task->setUsername('Ivan');
+//    echo $task->getUsername();
 
 
 

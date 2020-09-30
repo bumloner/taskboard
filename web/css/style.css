@@ -1,4 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 body {
     font-family: Roboto, Tahoma, sans-serif;
     font-size: 14px;
+}
+
+header {
+    padding: 20px;
+}
+
+main {
+    padding: 20px;
+    min-height: 400px;
+    width: 100%;
+}
+
+footer {
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    text-align: center;
 }

@@ -9,7 +9,7 @@ $config = [
         'password' => '',
     ],
     'viewData' => [
-        'href' => '//noteboard.loc',
+        'href' => '//taskboard.loc',
         'static_arg' => '?' . time(),
     ],
 ];
