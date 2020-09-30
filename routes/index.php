@@ -11,7 +11,7 @@ function index_route()
     } else {
         $pagination['current'] = 1;
     }
-    $pagination['total'] = ceil((R::count('task') / 3));
+    $pagination['total'] = ceil((R::count('task') / 3)) || 1;
 
     // sort
     $sort_titles = [
