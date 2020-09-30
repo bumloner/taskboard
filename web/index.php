@@ -5,3 +5,6 @@ require __DIR__ . '/../rb.php';  // RedBean
 
 $config = require __DIR__ . '/../config.php';
 require __DIR__ . '/../app.php';
+
+App::$config = $config;
+App::run();
