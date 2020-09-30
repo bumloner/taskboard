@@ -2,16 +2,28 @@
 
 {% block main %}
 
-<div class="row">
+<div class="dropdown tasks_sort">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort by: <b>{{ sort.title }}</b>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for sort_type, sort_title in sort_titles %}
+            <a class="dropdown-item tasks_sort_item" href="/?page={{ pagination.current }}&sort={{ sort_type }}">{{ sort_title }}</a>
+        {% endfor %}
+    </div>
+</div>
 
+<div class="row">
     {% for task in tasks %}
         <div class="col-sm-4">
             <div class="task">
                 {% if task.status %}
                     <div class="task_completed">completed &nbsp;</div>
+                {% else %}
+                    <div class="task_not_completed">not completed &nbsp;</div>
                 {% endif %}
                 {% if task.is_edited %}
-                    <div class="task_edited">edited &nbsp;</div>
+                    <div class="task_edited">edited by admin &nbsp;</div>
                 {% endif %}
                 <h3>Task # {{ task.id }}</h3>
                 <p>Username: {{ task.username }}</p>
@@ -25,7 +37,6 @@
             </div>
         </div>
     {% endfor %}
-
 </div>
 
 <div aria-label="..." class="tasks_pagination">
@@ -36,7 +47,7 @@
                     <a class="page-link" href="#">{{ page_id }} <span class="sr-only">(current)</span></a>
                 </li>
             {% else %}
-                <li class="page-item"><a class="page-link" href="/?page={{ page_id }}">{{ page_id }}</a></li>
+                <li class="page-item"><a class="page-link" href="/?page={{ page_id }}&sort={{ sort.type }}">{{ page_id }}</a></li>
             {% endif %}
         {% endfor %}
     </ul>

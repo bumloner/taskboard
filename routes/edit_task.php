@@ -26,9 +26,12 @@ function edit_task_route()
             ]);
         }
 
-        $task->bean->text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
+        $new_text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
+        if ($new_text !== $task->bean->text) {
+            $task->bean->is_edited = true;
+        }
+        $task->bean->text = $new_text;
         $task->bean->status = (int) $_POST['status'];
-        $task->bean->is_edited = true;
         $task->save();
 
         return Router::redirect('edit_task', [

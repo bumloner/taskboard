@@ -51,6 +51,22 @@ footer {
     float: right;
 }
 
+.task_not_completed {
+    color: darkred;
+    float: right;
+}
+
 .tasks_pagination {
     text-align: center;
+}
+
+.tasks_sort {
+    margin-bottom: 20px;
+}
+
+.tasks_sort_item {
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    color: #000;
 }
