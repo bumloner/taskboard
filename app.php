@@ -17,7 +17,7 @@ class App
             exit('Database connection error.');
         }
 
-        if (self::$config['env'] === 'dev') {
+        if (self::$config['env'] !== 'dev') {
             R::freeze(true); // freeze from automatic changing structures in db
         }
 
