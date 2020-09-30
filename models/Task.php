@@ -2,19 +2,22 @@
 
 class Task
 {
-    private $username;
-    private $email;
-    private $text;
-    private $status;
-    private $is_edited;
+    public $id;
+    public $username;
+    public $email;
+    public $text;
+    public $status = true;
+    public $is_edited = false;
 
-    public function setUsername($username)
+    public function saveNew()
     {
-        $this->username = $username;
+        $task = R::dispense('task');
+        $task->username = $this->username;
+        $task->email = $this->email;
+        $task->text = $this->text;
+        $task->status = $this->status;
+        $task->is_edited = $this->is_edited;
+        $this->id = R::store($task);
     }
 
-    public function getUsername()
-    {
-        return $this->username;
-    }
 }

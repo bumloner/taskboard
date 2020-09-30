@@ -11,6 +11,7 @@ class Html
         ]);
 
         $data['config'] = App::$config['viewData'];
+        $data['msg'] = Router::getMsg();
 
         return $twig->render($view_name . '.html', $data);
     }

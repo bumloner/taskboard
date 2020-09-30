@@ -11,21 +11,26 @@
     <title>Task Board</title>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <header>
         <ul class="nav nav-pills">
             <li role="presentation" class="active"><a href="/">Tasks</a></li>
+            <li role="presentation"><a href="/?p=create_task">Create task</a></li>
             <li role="presentation"><a href="/?p=login">Login</a></li>
             <li role="presentation"><a href="/?p=logout">Logout</a></li>
         </ul>
     </header>
 
     <main>
+        {% if msg %}
+            <p class="msg">{{ msg }}</p>
+        {% endif %}
+
         {% block main %}{% endblock %}
     </main>
 
     <footer>
-        &copy; Note Board 2020
+        &copy; Task Board 2020
     </footer>
 </div>
 
