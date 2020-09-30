@@ -16,8 +16,11 @@
         <ul class="nav nav-pills">
             <li role="presentation" class="active"><a href="/">Tasks</a></li>
             <li role="presentation"><a href="/?p=create_task">Create task</a></li>
-            <li role="presentation"><a href="/?p=login">Login</a></li>
-            <li role="presentation"><a href="/?p=logout">Logout</a></li>
+            {% if is_logged %}
+                <li role="presentation"><a href="/?p=logout">Logout (admin)</a></li>
+            {% else %}
+                <li role="presentation"><a href="/?p=login">Login</a></li>
+            {% endif %}
         </ul>
     </header>
 

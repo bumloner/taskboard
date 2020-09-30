@@ -7,10 +7,21 @@
     {% for task in tasks %}
         <div class="col-sm-4">
             <div class="task">
+                {% if task.status %}
+                    <div class="task_completed">completed &nbsp;</div>
+                {% endif %}
+                {% if task.is_edited %}
+                    <div class="task_edited">edited &nbsp;</div>
+                {% endif %}
                 <h3>Task # {{ task.id }}</h3>
-                <div>Username: {{ task.username }}</div>
-                <div>Email: {{ task.email }}</div>
-                <p>{{ task.text }}</p>
+                <p>Username: {{ task.username }}</p>
+                <p>Email: {{ task.email }}</p>
+                <hr>
+                <p><b>{{ task.text }}</b></p>
+
+                {% if is_logged %}
+                    <p><a class="btn btn-success" href="/?p=edit_task&id={{ task.id }}">Edit task</a></p>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

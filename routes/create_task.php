@@ -18,13 +18,14 @@ function create_task_route()
 
         // create task
         $task = new Task();
-        $task->username = $_POST['username'];
-        $task->email = $_POST['email'];
-        $task->text = $_POST['text'];
-        $task->saveNew();
+        $task->create();
+        $task->bean->username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+        $task->bean->email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+        $task->bean->text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
+        $task->save();
 
         return Router::redirect('/', [
-            'msg' => 'Task created! (# ' . $task->id . ')'
+            'msg' => 'Task created! (# ' . $task->bean->id . ')'
         ]);
     }
 

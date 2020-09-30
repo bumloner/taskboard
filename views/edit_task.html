@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<form action="/?p=edit_task" method="post">
+    <p><b>Username:</b> {{ task.username }}</p>
+    <p><b>Email:</b> {{ task.email }}</p>
+    <input type="hidden" id="id" name="id" value="{{ task.id }}">
+    <div class="form-group">
+        <label for="text">Text</label>
+        <textarea class="form-control" id="text" name="text" rows="3">{{ task.text }}</textarea>
+    </div>
+    <div class="form-check">
+        {% if task.status == true %}
+            <input type="checkbox" class="form-check-input" id="status" name="status" value="1" checked>
+        {% else %}
+            <input type="checkbox" class="form-check-input" id="status" name="status" value="1">
+        {% endif %}
+        <label class="form-check-label" for="status">Completed</label>
+    </div>
+    <button type="submit" class="btn btn-success">Edit</button>
+</form>
+
+{% endblock %}

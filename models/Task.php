@@ -2,22 +2,24 @@
 
 class Task
 {
-    public $id;
-    public $username;
-    public $email;
-    public $text;
-    public $status = true;
-    public $is_edited = false;
+    public $bean;
 
-    public function saveNew()
+    public function create()
     {
-        $task = R::dispense('task');
-        $task->username = $this->username;
-        $task->email = $this->email;
-        $task->text = $this->text;
-        $task->status = $this->status;
-        $task->is_edited = $this->is_edited;
-        $this->id = R::store($task);
+        $this->bean = R::dispense('task');
     }
 
+    public function save()
+    {
+        return R::store($this->bean);
+    }
+
+    public function load($id)
+    {
+        $this->bean = R::load( 'task', $id);
+        if ((int) $this->bean->id !== $id) {
+            return false;
+        }
+        return true;
+    }
 }

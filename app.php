@@ -18,6 +18,8 @@ class App
             exit('Database connection error.');
         }
 
+        session_start();
+
         $router = new Router();
         $router->run();
     }

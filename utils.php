@@ -12,6 +12,7 @@ class Html
 
         $data['config'] = App::$config['viewData'];
         $data['msg'] = Router::getMsg();
+        $data['is_logged'] = is_logged();
 
         return $twig->render($view_name . '.html', $data);
     }
@@ -25,4 +26,9 @@ class Html
     {
         return htmlspecialchars_decode($content, ENT_QUOTES);
     }
+}
+
+function is_logged()
+{
+    return (isset($_SESSION['is_logged']) && $_SESSION['is_logged']);
 }
