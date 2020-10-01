@@ -36,5 +36,5 @@ function login_route()
         ]);
     }
 
-    return Html::render('login');
+    return render('login');
 }

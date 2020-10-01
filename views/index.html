@@ -2,6 +2,10 @@
 
 {% block main %}
 
+{% if tasks|length == 0 %}
+    <h3>No tasks</h3>
+{% else %}
+
 <div class="dropdown tasks_sort">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Sort by: <b>{{ sort.title }}</b>
@@ -39,6 +43,7 @@
     {% endfor %}
 </div>
 
+{% if pagination.total > 1 %}
 <div aria-label="..." class="tasks_pagination">
     <ul class="pagination">
         {% for page_id in 1..pagination.total %}
@@ -52,5 +57,8 @@
         {% endfor %}
     </ul>
 </div>
+{% endif %}
+
+{% endif %}
 
 {% endblock %}

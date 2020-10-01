@@ -19,9 +19,11 @@ function create_task_route()
         // create task
         $task = new Task();
         $task->create();
-        $task->bean->username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-        $task->bean->email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-        $task->bean->text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
+        $task->bean->username = (string) filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+        $task->bean->email = (string) filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+        $task->bean->text = (string) filter_var($_POST['text'], FILTER_SANITIZE_STRING);
+        $task->bean->status = false;
+        $task->bean->is_edited = false;
         $task->save();
 
         return Router::redirect('/', [
@@ -29,5 +31,5 @@ function create_task_route()
         ]);
     }
 
-    return Html::render('create_task');
+    return render('create_task');
 }

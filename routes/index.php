@@ -2,8 +2,6 @@
 
 function index_route()
 {
-    define('TASKS_NUMBER', 3);
-
     // pagination
     $pagination = [];
     if (isset($_GET['page'])) {
@@ -11,7 +9,7 @@ function index_route()
     } else {
         $pagination['current'] = 1;
     }
-    $pagination['total'] = ceil((R::count('task') / 3)) || 1;
+    $pagination['total'] = ceil((R::count('task') / 3));
 
     // sort
     $sort_titles = [
@@ -50,10 +48,12 @@ function index_route()
         $tasks = [];
     }
 
-    return Html::render('index', compact('tasks', 'pagination', 'sort', 'sort_titles'));
+    return render('index', compact('tasks', 'pagination', 'sort', 'sort_titles'));
 }
 
 function limit_by_page($page)
 {
-    return ' LIMIT ' . (($page - 1) * 3) . ',3';
+    define('TASKS_ON_PAGE', 3);
+
+    return ' LIMIT ' . (($page - 1) * TASKS_ON_PAGE) . ',' . TASKS_ON_PAGE;
 }

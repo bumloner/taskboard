@@ -26,12 +26,12 @@ function edit_task_route()
             ]);
         }
 
-        $new_text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
+        $new_text = (string) filter_var($_POST['text'], FILTER_SANITIZE_STRING);
         if ($new_text !== $task->bean->text) {
             $task->bean->is_edited = true;
         }
         $task->bean->text = $new_text;
-        $task->bean->status = (int) $_POST['status'];
+        $task->bean->status = (bool) $_POST['status'];
         $task->save();
 
         return Router::redirect('edit_task', [
@@ -40,16 +40,12 @@ function edit_task_route()
         ]);
     }
 
-    if (!isset($_GET['id'])) {
-        return Html::render('404');
-    }
-
     $task = new Task();
-    if (!$task->load((int) $_GET['id'])) {
-        return Html::render('404');
+    if (!isset($_GET['id']) || !$task->load((int) $_GET['id'])) {
+        return Router::errorNotFound();
     }
 
-    return Html::render('edit_task', [
+    return render('edit_task', [
         'task' => $task->bean
     ]);
 }

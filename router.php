@@ -52,7 +52,7 @@ class Router
 
     public static function errorNotFound()
     {
-        return Html::render('404');
+        return render('404');
     }
 
 
