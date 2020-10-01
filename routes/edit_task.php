@@ -18,15 +18,16 @@ function edit_task_route()
         }
 
         // edit task
+        $id = (int) $_POST['id'];
         $task = new Task();
-        if (!$task->load((int) $_POST['id'])) {
+        if (!$task->load($id)) {
             return Router::redirect('edit_task', [
                 'msg' => 'Task doesn\'t exists',
-                'id' => $_POST['id']
+                'id' => $id
             ]);
         }
 
-        $new_text = (string) filter_var($_POST['text'], FILTER_SANITIZE_STRING);
+        $new_text = (string) $_POST['text'];
         if ($new_text !== $task->bean->text) {
             $task->bean->is_edited = true;
         }
@@ -36,7 +37,7 @@ function edit_task_route()
 
         return Router::redirect('edit_task', [
             'msg' => 'Task edited! (# ' . $task->bean->id . ')',
-            'id' => $_POST['id']
+            'id' => $id
         ]);
     }
 

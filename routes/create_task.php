@@ -19,9 +19,9 @@ function create_task_route()
         // create task
         $task = new Task();
         $task->create();
-        $task->bean->username = (string) filter_var($_POST['username'], FILTER_SANITIZE_STRING);
-        $task->bean->email = (string) filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-        $task->bean->text = (string) filter_var($_POST['text'], FILTER_SANITIZE_STRING);
+        $task->bean->username = (string) $_POST['username'];
+        $task->bean->email = (string) $_POST['email'];
+        $task->bean->text = (string) $_POST['text'];
         $task->bean->status = false;
         $task->bean->is_edited = false;
         $task->save();
