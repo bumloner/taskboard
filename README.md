@@ -4,9 +4,13 @@
 </div>
 
 
+<strike>
+
 ### Try it online
 
 <a href="http://taskboard.example.bumloner.com">taskboard.example.bumloner.com</a>
+
+</strike>
 
 
 ### Preview
